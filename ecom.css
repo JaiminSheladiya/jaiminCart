@@ -1,0 +1,85 @@
+#container{
+    height: auto;
+    width: 90%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    /* border: 1px solid red; */
+    gap : 15px;
+}
+#cartBtn{
+  background-color: rgb(109, 213, 213);
+padding: 20px 50px;
+  font-size: 30px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  text-decoration: none;
+  border-width: 0px;
+  border-radius: 10px; 
+}
+a{
+  text-decoration: none;
+  color: white;
+}
+h2{
+    margin-left: 5%;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+#card{
+    /* border : 1px solid green; */
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    height : auto;
+    padding: 10px;
+}
+#price{
+  display: flex;
+  justify-content: space-around;
+  width: 60%;
+}
+#price>p:last-child{
+  color: grey;
+  text-decoration: line-through;
+}
+#cart{
+color: white;
+background-color: blue;
+padding: 5px 15px;
+border: 0 px;
+border-radius: 5px;
+cursor: pointer;
+}
+#delete{
+  color: white;
+background-color: rgb(206, 18, 18);
+padding: 5px 15px;
+border: 0 px;
+border-radius: 5px;
+cursor: pointer;
+}
+#gDiv{
+  display: flex;
+  justify-content: space-between;
+  border : 1px solid red;
+}
+#addItems{
+  display: flex;
+  margin: 10px;
+  width: 70%;
+  /* justify-content: center; */
+  align-items: center;
+
+}
+#addItems>div{
+  font-size: 20px;
+  margin-left: 10px;
+  flex: 1;
+  cursor: pointer;
+}
+#cart:hover{
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+#heading{
+  display: flex;
+  justify-content: space-around;
+  font-size: 30px;
+  margin-bottom: 50px;
+}

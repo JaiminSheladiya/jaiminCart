@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<link rel="stylesheet" href="ecom.css">
+</head>
+<body>
+    <div id="heading"><h1>cart</h1>
+    <h1 id="Tcart"></h1>
+    </div>
+    
+    <div id="container">
+    </div>
+</body>
+<script>
+    var data =JSON.parse(localStorage.getItem("cart")) || [];
+    
+function Display(data){
+    
+    data.forEach(ele => {
+        var curr_item = data.filter(elem => ele.id  === elem.id)[0]
+        data = data.filter(elem => ele.id  !== elem.id)
+        // console.log(curr_item)
+        // console.log(ele)
+        console.log(data)
+         curr_item.qty = 1;
+         curr_item.price = ele.price * curr_item.qty;
+         console.log(curr_item)
+        var img = document.createElement("img")
+    img.setAttribute("src",ele.image_url)
+
+    var name = document.createElement("p")
+    name.innerText = ele.name
+
+    var price = document.createElement("p")
+   price.innerText = curr_item.price;
+
+    var sPrice = document.createElement("p")
+    sPrice.innerText = ele.strikedoffprice
+
+    var priceSec = document.createElement("div")
+    priceSec.id = price
+
+        priceSec.append(price,sPrice)
+
+    var btn = document.createElement("button")
+    btn.id = "cart"
+    btn.addEventListener("click",function(){
+    deleteElement(ele.name);
+    
+     })
+    btn.innerText = "DELETE"
+    var qty = document.createElement("select")
+    
+    var addItems = document.createElement("div")
+     addItems.id = "addItems"
+
+     var minus = document.createElement("div")
+     minus.innerText = "-"
+     minus.addEventListener("click",function(){
+         if(curr_item.qty != 1){
+            curr_item.qty  -=1;
+             num.innerText = curr_item.qty;
+           
+             price.innerText = curr_item.price*curr_item.qty;
+            localStorage.setItem("cart",JSON.stringify([...data,curr_item]))
+         }
+         
+     })
+
+     var plus = document.createElement("div")
+     plus.innerText = "+"
+     plus.addEventListener("click",function(){
+        curr_item.qty+=1;
+        console.log(curr_item.qty)
+        num.innerText = curr_item.qty
+      
+        price.innerText = curr_item.price*curr_item.qty;
+        console.log(curr_item.qty*curr_item.price)
+        localStorage.setItem("cart",JSON.stringify([...data,curr_item]))
+     })
+
+     var num = document.createElement("div")
+     num.innerText = curr_item.qty;
+ 
+
+     addItems.append(minus,num,plus)
+     var gDiv = document.createElement("div")
+
+     gDiv.id = "gDiv"
+     gDiv.append(btn,addItems)
+  var card = document.createElement("div")
+  card.id = "card"
+  card.append(img,name,priceSec,gDiv)
+  document.querySelector("#container").append(card)
+    });
+
+}
+
+Display(data)
+
+function deleteElement(name){
+    // console.log(name)
+    window.location.reload();
+    data = data.filter(function (ele) {
+        return ele.name != name;
+        
+         
+    })
+localStorage.setItem("cart",JSON.stringify(data))
+
+}
+
+</script>
+
+</html>
